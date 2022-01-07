@@ -33,8 +33,8 @@ class _HomePageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final uiProvider = Provider.of<UiProvider>(context);
-    final currentIndex = uiProvider.selectedMenuOption;
+    final UiProvider uiProvider = Provider.of<UiProvider>(context);
+    final int currentIndex = uiProvider.selectedMenuOption;
 
     switch (currentIndex) {
       case 0:
