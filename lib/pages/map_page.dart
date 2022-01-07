@@ -5,11 +5,9 @@ class MapPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
-        child: Container(
-          child: Text('Hello world'),
-        ),
+        child: Text('Hello world'),
       ),
     );
   }
