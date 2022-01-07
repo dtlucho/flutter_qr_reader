@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import 'package:flutter_qr_reader/pages/maps_history_page.dart';
+import 'package:flutter_qr_reader/pages/urls_history_page.dart';
 import 'package:flutter_qr_reader/widgets/custom_bottom_navigator.dart';
 import 'package:flutter_qr_reader/widgets/scan_button.dart';
 
@@ -15,14 +18,28 @@ class HomePage extends StatelessWidget {
           IconButton(onPressed: () {}, icon: const Icon(Icons.delete_forever))
         ],
       ),
-      body: Center(
-        child: Container(
-          child: Text('Hello world'),
-        ),
-      ),
-      bottomNavigationBar: CustomBottomNavigator(),
-      floatingActionButton: ScanButton(),
+      body: const _HomePageBody(),
+      bottomNavigationBar: const CustomBottomNavigator(),
+      floatingActionButton: const ScanButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
+  }
+}
+
+class _HomePageBody extends StatelessWidget {
+  const _HomePageBody({Key? key}) : super(key: key);
+
+  final currentIndex = 1;
+
+  @override
+  Widget build(BuildContext context) {
+    switch (currentIndex) {
+      case 0:
+        return const MapsHistoryPage();
+      case 1:
+        return const UrlsHistoryPage();
+      default:
+        return const MapsHistoryPage();
+    }
   }
 }
