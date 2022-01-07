@@ -12,9 +12,15 @@ class MyApp extends StatelessWidget {
       title: 'QR Reader',
       initialRoute: 'home',
       routes: {
-        'home': (_) => HomePage(),
-        'map': (_) => MapPage(),
+        'home': (_) => const HomePage(),
+        'map': (_) => const MapPage(),
       },
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
+        floatingActionButtonTheme: const FloatingActionButtonThemeData(
+          backgroundColor: Colors.deepPurple,
+        ),
+      ),
     );
   }
 }
