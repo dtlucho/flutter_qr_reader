@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 
 import 'package:flutter_qr_reader/pages/maps_history_page.dart';
 import 'package:flutter_qr_reader/pages/urls_history_page.dart';
+import 'package:flutter_qr_reader/providers/ui_provider.dart';
 import 'package:flutter_qr_reader/widgets/custom_bottom_navigator.dart';
 import 'package:flutter_qr_reader/widgets/scan_button.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -29,10 +31,11 @@ class HomePage extends StatelessWidget {
 class _HomePageBody extends StatelessWidget {
   const _HomePageBody({Key? key}) : super(key: key);
 
-  final currentIndex = 1;
-
   @override
   Widget build(BuildContext context) {
+    final uiProvider = Provider.of<UiProvider>(context);
+    final currentIndex = uiProvider.selectedMenuOption;
+
     switch (currentIndex) {
       case 0:
         return const MapsHistoryPage();
