@@ -16,12 +16,22 @@ class MapsHistoryPage extends StatelessWidget {
     return ListView.builder(
       itemCount: scans.length,
       itemBuilder: (_, int index) {
-        return ListTile(
-          leading: Icon(Icons.map, color: Theme.of(context).primaryColor),
-          title: Text(scans[index].value),
-          subtitle: Text(scans[index].id.toString()),
-          trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.grey),
-          onTap: () => print(scans[index].id),
+        return Dismissible(
+          key: UniqueKey(),
+          background: Container(color: Colors.red),
+          direction: DismissDirection.endToStart,
+          onDismissed: (direction) {
+            Provider.of<ScanListProvider>(context, listen: false)
+                .deleteScanById(scans[index].id!);
+          },
+          child: ListTile(
+            leading: Icon(Icons.map, color: Theme.of(context).primaryColor),
+            title: Text(scans[index].value),
+            subtitle: Text(scans[index].id.toString()),
+            trailing:
+                const Icon(Icons.keyboard_arrow_right, color: Colors.grey),
+            onTap: () => print(scans[index].id),
+          ),
         );
       },
     );
