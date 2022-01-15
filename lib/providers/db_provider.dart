@@ -68,15 +68,15 @@ class DBProvider {
     return res.isNotEmpty ? ScanModel.fromJson(res.first) : null;
   }
 
-  Future<List<ScanModel>?> getScans(int id) async {
+  Future<List<ScanModel>> getScans(int id) async {
     final Database db = await database;
     final res = await db.query("Scans");
     return res.isNotEmpty
         ? res.map((scan) => ScanModel.fromJson(scan)).toList()
-        : null;
+        : [];
   }
 
-  Future<List<ScanModel>?> getScansByType(String type) async {
+  Future<List<ScanModel>> getScansByType(String type) async {
     final Database db = await database;
     final res = await db.rawQuery('''
       SELECT *
@@ -85,6 +85,6 @@ class DBProvider {
     ''');
     return res.isNotEmpty
         ? res.map((scan) => ScanModel.fromJson(scan)).toList()
-        : null;
+        : [];
   }
 }
