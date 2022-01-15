@@ -20,7 +20,7 @@ class MapsHistoryPage extends StatelessWidget {
           leading: Icon(Icons.map, color: Theme.of(context).primaryColor),
           title: Text(scans[index].value),
           subtitle: Text(scans[index].id.toString()),
-          trailing: Icon(Icons.keyboard_arrow_right, color: Colors.grey),
+          trailing: const Icon(Icons.keyboard_arrow_right, color: Colors.grey),
           onTap: () => print(scans[index].id),
         );
       },
