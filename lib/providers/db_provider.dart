@@ -56,7 +56,7 @@ class DBProvider {
     return res;
   }
 
-  newScan(ScanModel newScan) async {
+  Future<int> newScan(ScanModel newScan) async {
     final Database db = await database;
     final res = await db.insert("Scans", newScan.toJson());
     return res;
