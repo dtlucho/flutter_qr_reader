@@ -18,7 +18,13 @@ class HomePage extends StatelessWidget {
         elevation: 0,
         title: const Text('History'),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.delete_forever))
+          IconButton(
+            icon: const Icon(Icons.delete_forever),
+            onPressed: () {
+              Provider.of<ScanListProvider>(context, listen: false)
+                  .deleteAllScans();
+            },
+          )
         ],
       ),
       body: const _HomePageBody(),
