@@ -15,4 +15,10 @@ class ScanListProvider extends ChangeNotifier {
       notifyListeners();
     }
   }
+
+  void loadScans() async {
+    final _scans = await DBProvider.db.getScans();
+    scans = [..._scans];
+    notifyListeners();
+  }
 }
