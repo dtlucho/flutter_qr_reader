@@ -16,9 +16,16 @@ class ScanListProvider extends ChangeNotifier {
     }
   }
 
-  void loadScans() async {
+  Future<void> loadScans() async {
     final _scans = await DBProvider.db.getScans();
     scans = [..._scans];
+    notifyListeners();
+  }
+
+  Future<void> loadScansByType(String type) async {
+    final _scans = await DBProvider.db.getScansByType(type);
+    scans = [..._scans];
+    selectedType = type;
     notifyListeners();
   }
 }
