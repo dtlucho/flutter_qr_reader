@@ -28,4 +28,10 @@ class ScanListProvider extends ChangeNotifier {
     selectedType = type;
     notifyListeners();
   }
+
+  Future<void> deleteAllScans() async {
+    await DBProvider.db.deleteAllScans();
+    scans = [];
+    notifyListeners();
+  }
 }
