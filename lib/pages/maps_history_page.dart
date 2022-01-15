@@ -5,8 +5,17 @@ class MapsHistoryPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text('Maps history page'),
+    return ListView.builder(
+      itemCount: 10,
+      itemBuilder: (_, int index) {
+        return ListTile(
+          leading: Icon(Icons.map, color: Theme.of(context).primaryColor),
+          title: Text("https://google.com"),
+          subtitle: Text("id"),
+          trailing: Icon(Icons.keyboard_arrow_right, color: Colors.grey),
+          onTap: () => print("open"),
+        );
+      },
     );
   }
 }
