@@ -1,19 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_qr_reader/models/scan_model.dart';
+import 'package:flutter_qr_reader/providers/scan_list_provider.dart';
+import 'package:provider/provider.dart';
 
 class MapsHistoryPage extends StatelessWidget {
   const MapsHistoryPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final ScanListProvider scanListProvider =
+        Provider.of<ScanListProvider>(context);
+
+    final List<ScanModel> scans = scanListProvider.scans;
+
     return ListView.builder(
-      itemCount: 10,
+      itemCount: scans.length,
       itemBuilder: (_, int index) {
         return ListTile(
           leading: Icon(Icons.map, color: Theme.of(context).primaryColor),
-          title: Text("https://google.com"),
-          subtitle: Text("id"),
+          title: Text(scans[index].value),
+          subtitle: Text(scans[index].id.toString()),
           trailing: Icon(Icons.keyboard_arrow_right, color: Colors.grey),
-          onTap: () => print("open"),
+          onTap: () => print(scans[index].id),
         );
       },
     );
