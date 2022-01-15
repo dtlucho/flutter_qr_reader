@@ -45,6 +45,7 @@ class DBProvider {
     final id = newScan.id;
     final type = newScan.type;
     final value = newScan.value;
+
     final Database db = await database;
 
     final res = await db.rawInsert('''
@@ -59,5 +60,12 @@ class DBProvider {
     final Database db = await database;
     final res = await db.insert("Scans", newScan.toJson());
     return res;
+  }
+
+  Future<ScanModel?> getScanById(int id) async {
+    final Database db = await database;
+    final res = await db.query("Scans", where: "id = ?", whereArgs: [id]);
+
+    return res.isNotEmpty ? ScanModel.fromJson(res.first) : null;
   }
 }
