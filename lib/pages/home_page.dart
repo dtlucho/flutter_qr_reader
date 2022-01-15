@@ -37,7 +37,7 @@ class _HomePageBody extends StatelessWidget {
     final UiProvider uiProvider = Provider.of<UiProvider>(context);
     final int currentIndex = uiProvider.selectedMenuOption;
 
-    DbProvider.db.database;
+    DBProvider.db.database;
 
     switch (currentIndex) {
       case 0:
