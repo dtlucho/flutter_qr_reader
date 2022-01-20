@@ -16,13 +16,13 @@ class _MapPageState extends State<MapPage> {
 
   @override
   Widget build(BuildContext context) {
-    const CameraPosition _initialCameraPosition = CameraPosition(
-      target: LatLng(37.42796133580664, -122.085749655962),
-      zoom: 14.4746,
-    );
-
     final ScanModel scan =
         ModalRoute.of(context)!.settings.arguments as ScanModel;
+
+    final CameraPosition _initialCameraPosition = CameraPosition(
+      target: scan.getLatLng(),
+      zoom: 17.00,
+    );
 
     return Scaffold(
       appBar: AppBar(
@@ -30,7 +30,7 @@ class _MapPageState extends State<MapPage> {
         title: const Text('Map'),
       ),
       body: GoogleMap(
-        mapType: MapType.hybrid,
+        mapType: MapType.normal,
         initialCameraPosition: _initialCameraPosition,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
