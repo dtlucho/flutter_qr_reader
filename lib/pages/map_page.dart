@@ -35,8 +35,25 @@ class _MapPageState extends State<MapPage> {
       appBar: AppBar(
         elevation: 0,
         title: const Text('Map'),
+        actions: [
+          IconButton(
+            onPressed: () async {
+              final GoogleMapController controller = await _controller.future;
+              controller.animateCamera(
+                CameraUpdate.newCameraPosition(
+                  CameraPosition(
+                    target: scan.getLatLng(),
+                    zoom: 17.00,
+                  ),
+                ),
+              );
+            },
+            icon: const Icon(Icons.location_on),
+          ),
+        ],
       ),
       body: GoogleMap(
+        myLocationButtonEnabled: false,
         mapType: MapType.normal,
         initialCameraPosition: _initialCameraPosition,
         markers: markers,
