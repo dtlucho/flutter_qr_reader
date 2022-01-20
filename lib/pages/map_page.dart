@@ -24,6 +24,13 @@ class _MapPageState extends State<MapPage> {
       zoom: 17.00,
     );
 
+    // Markers
+    Set<Marker> markers = <Marker>{};
+    markers.add(Marker(
+      markerId: MarkerId(UniqueKey().toString()),
+      position: scan.getLatLng(),
+    ));
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -32,6 +39,7 @@ class _MapPageState extends State<MapPage> {
       body: GoogleMap(
         mapType: MapType.normal,
         initialCameraPosition: _initialCameraPosition,
+        markers: markers,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
